@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Blood Donar</title>
+  </head>
+  <body>
+    {% include 'common/head.html' %}
+    <table border="0">
+        <tr>
+            <td>
+            {% include 'common/details.html' %}
+            </td>
+            <td style="width: 80%;">
+                <form method="post">    {% csrf_token %}
+                <table align="center" border="0" cellpadding="2">
+                    <tr><th colspan="2" style="text-align: center;height: 50px; font-size: 22px">Donor Registration Page</th></tr>
+                    <tr>
+                        <td>Donor Name :</td>
+                        <td>{{ form.d_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>User ID :</td>
+                        <td>{{ form.d_userid }}</td>
+                    </tr>
+                     <tr>
+                        <td>Password :</td>
+                        <td>{{ form.d_password }}</td>
+                    </tr>
+                     <tr>
+                        <td>Gender :</td>
+                        <td>
+                            <select onselect="{{ form.d_gender }}">
+                                <option selected disabled>Select</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                            </select>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>Age :</td>
+                        <td>{{ form.d_age }}</td>
+                    </tr>
+                     <tr>
+                        <td>Email :</td>
+                        <td>{{ form.d_email }}</td>
+                    </tr>
+                     <tr>
+                        <td>Contact No :</td>
+                        <td>{{ form.d_contact }}</td>
+                    </tr>
+                     <tr>
+                        <td>Blood Group :</td>
+                        <td>
+                            <select onselect="{{ form.d_blood_group }}">
+                                <option selected disabled>Select</option>
+                                <option>A +ve</option>
+                                <option>A -ve</option>
+                                <option>B +ve</option>
+                                <option>B -ve</option>
+                                <option>AB +ve</option>
+                                <option>AB -ve</option>
+                                <option>O +ve</option>
+                                <option>O -ve</option>
+                            </select>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>State :</td>
+                        <td>
+                            <select onselect="{{ form.d_state }}">
+                                <option selected disabled>Select State</option>
+                                <option>Andaman and Nicobar Islands</option>
+                                <option>Andhra Pradesh</option>
+                                <option>Arunachal Pradesh</option>
+                                <option>Assam</option>
+                                <option>Bihar</option>
+                                <option>Chandigarh</option>
+                                <option>Chhattisgarh</option>
+                                <option>Dadra and Nagar Haveli</option>
+                                <option>Daman and Diu</option>
+                                <option>Delhi</option>
+                                <option>Goa</option>
+                                <option>Gujarat</option>
+                                <option>Haryana</option>
+                                <option>Himachal Pradesh</option>
+                                <option>Jammu and Kashmir</option>
+                                <option>Jharkhand</option>
+                                <option>Karnataka</option>
+                                <option>Kerala</option>
+                                <option>Ladakh</option>
+                                <option>Lakshadweep</option>
+                                <option>Madhya Pradesh</option>
+                                <option>Maharashtra</option>
+                                <option>Manipur</option>
+                                <option>Meghalaya</option>
+                                <option>Mizoram</option>
+                                <option>Nagaland</option>
+                                <option>Odisha</option>
+                                <option>Puducherry</option>
+                                <option>Punjab</option>
+                                <option>Rajasthan</option>
+                                <option>Sikkim</option>
+                                <option>Tamilnadu</option>
+                                <option>Telangana</option>
+                                <option>Tripura</option>
+                                <option>Uttar Pradesh</option>
+                                <option>Uttarakhand</option>
+                                <option>West Bengal</option>
+                            </select>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>City :</td>
+                        <td>{{ form.d_city }}</td>
+                    </tr>
+                     <tr>
+                        <td>Weight :</td>
+                        <td>{{ form.d_weight }}</td>
+                    </tr>
+                     <tr>
+                        <td>Last Donation Date :</td>
+                        <td>{{ form.d_last_donation_date }}</td>
+                    </tr>
+
+                    <tr><th colspan="2" style="text-align: center;height: 50px"><button type="submit"> Register </button></th></tr>
+
+                </table>
+                </form>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

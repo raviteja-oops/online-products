@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Blood Donar</title>
+  </head>
+  <body>
+    {% include 'common/head.html' %}
+    <h3 style="text-align: center">Welcome <a style="text-decoration: underline;color: red">{{ result.d_userid }}{{ data.d_userid }}</a></h3>
+    <table border="0">
+        <tr>
+            <td>
+            <table cellpadding="5" align="left" style="margin-left: 30px; font-weight: bolder; font-size: 20px">
+                <tr><td><a href="#" style="color: red; text-decoration: underline"> Find </a></td></tr>
+                <tr><td></td></tr>
+                <tr><td><a href="{% url 'modify_donor_details' %}?modified_userid={{ result.d_userid }}" style="color: brown"> -Modify Details </a></td></tr>
+                <tr><td><a href="{% url 'delete_donor_confirmation' %}?delete_donor={{ result.d_userid }}" style="color: brown"> -Delete Account </a></td></tr>
+                <tr><td><a href="{% url 'donor_logout' %}" style="color: brown"> -Logout </a></td></tr>
+            </table>
+            {% if data %}
+                <td style="width: 80%;">
+                <form method="post" action="{% url 'update_donor' %}">    {% csrf_token %}
+                <table align="center" border="0" cellpadding="2">
+                    <tr>
+                        <td>Donor Name :</td>
+                        <td>{{ data.d_name }}</td>
+                    </tr>
+                    <tr>
+                        <td>User ID :</td>
+                        <td><input type="text" required readonly value="{{ data.d_userid }}" name="md_userid"></td>
+                    </tr>
+                     <tr>
+                        <td>Gender :</td>
+                        <td>{{ data.d_gender }}</td>
+                    </tr>
+                     <tr>
+                        <td>Age :</td>
+                        <td>{{ data.d_age }}</td>
+                    </tr>
+                     <tr>
+                        <td>Email :</td>
+                        <td><input type="email" required value="{{ data.d_email }}" name="md_email"></td>
+                    </tr>
+                     <tr>
+                        <td>Contact No :</td>
+                        <td><input type="number" required value="{{ data.d_contact }}" name="md_contact"></td>
+                    </tr>
+                     <tr>
+                        <td>Blood Group :</td>
+                        <td>{{ data.d_blood_group }}</td>
+                    </tr>
+                     <tr>
+                        <td>State :</td>
+                        <td>{{ data.d_state }}</td>
+                    </tr>
+                     <tr>
+                        <td>City :</td>
+                        <td>{{ data.d_city }}</td>
+                    </tr>
+                     <tr>
+                        <td>Weight :</td>
+                        <td><input type="number" required value="{{ data.d_weight }}" name="md_weight"></td>
+                    </tr>
+                     <tr>
+                        <td>Last Donation Date :</td>
+                        <td><input type="date" required value="{{ data.d_last_donation_date }}" name="md_last_donation_date"></td>
+                    </tr>
+
+                    <tr><th colspan="2" style="text-align: center;height: 50px"><button type="submit"> Update </button></th></tr>
+
+                </table>
+                </form>
+            </td>
+            {% endif %}
+             {% if message %}
+                <td style="width: 80%;">
+                <table align="center" border="0" cellpadding="2">
+                    <tr><th style="text-align: center;height: 50px; font-size: 30px">{{ message }}</th></tr>
+                </table>
+            </td>
+            {% endif %}
+            {% if delete %}
+                <td style="width: 80%;">
+                <form method="post" action="{% url 'delete_donor' %}">    {% csrf_token %}
+                <table align="center" border="0" cellpadding="2">
+                    <tr><th colspan="2" style="text-align: center;height: 50px; font-size: 30px">Confirm The Details</th></tr>
+                    <tr>
+                        <td>User ID :</td>
+                        <td><input type="text" required value="{{ data.d_userid }}" name="delete_userid"></td>
+                    </tr>
+                     <tr>
+                        <td>Password :</td>
+                        <td><input type="password" required name="delete_password"></td>
+                    </tr>
+
+                    <tr><th colspan="2" style="text-align: center;height: 50px"><button type="submit"> Delete </button></th></tr>
+                </table>
+                </form>
+                </td>
+            {% endif %}
+
+
+
+        </tr>
+    </table>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
